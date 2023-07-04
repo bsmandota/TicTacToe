@@ -1,8 +1,8 @@
-import Todo from "./components/ToDo"
+import TicTacToe from "./components/TicTacToe"
+
 function App() {
-    
     return(
-        <Todo />
+        <TicTacToe />
     )
     
 }
