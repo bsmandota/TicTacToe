@@ -137,7 +137,7 @@ function TicTacToe() {
   return (
     <div className="flex items-center flex-col lg:flex-row lg:justify-around bg-[#470953] h-screen">
       <div className="">
-        <h1 className="text-6xl rounded bg-clip-text text-transparent bg-gradient-to-b from-[#6F2DA8]/50 via-white to-black font-bold text-center drop-shadow-xl my-6">
+        <h1 className="text-6xl rounded bg-clip-text text-transparent bg-gradient-to-b from-[#6F2DA8]/50 via-white to-black font-bold text-center drop-shadow-xl my-4">
           TicTacToe
         </h1>
         <h2
@@ -147,7 +147,7 @@ function TicTacToe() {
               : winMessage == "X Won!"
               ? "text-[#3EB489]"
               : "text-white"
-          } animate-bounce text-3xl font-extrabold h-14`}
+          } animate-bounce text-3xl text-center font-extrabold h-14`}
         >
           {winMessage}
         </h2>
