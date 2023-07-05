@@ -208,7 +208,7 @@ function TicTacToe() {
             {(winMessage=== "O Won!" || winMessage === "X Won!" ) &&(
         <div className={`absolute flex justify-center items-center z-10`}>
           <Player
-            className="w-96 h-96"
+            className="w-full aspect-square"
             autoplay
             src="https://assets10.lottiefiles.com/packages/lf20_poy1vcfr.json"
           ></Player>
