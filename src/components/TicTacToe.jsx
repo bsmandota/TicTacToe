@@ -135,8 +135,8 @@ function TicTacToe() {
      }
   }
   return (
-    <div className="flex items-center flex-col lg:flex-row lg:justify-around bg-[#470953] h-screen">
-      <div className="">
+    <div className="flex items-center min-h-screen flex-col sm:flex-row sm:justify-evenly bg-[#470953] h-auto">
+      <div className="flex justify-evenly flex-col items-center w-3/5">
         <h1 className="text-6xl rounded bg-clip-text text-transparent bg-gradient-to-b from-[#6F2DA8]/50 via-white to-black font-bold text-center drop-shadow-xl my-4">
           TicTacToe
         </h1>
@@ -152,7 +152,7 @@ function TicTacToe() {
           {winMessage}
         </h2>
         <div className="flex justify-center items-center">
-          <div className="w-screen aspect-square md:w-96 md:h-96 bg-[#4B0082] rounded-lg shadow-lg flex flex-wrap space-x-0 space-y-0 relative">
+          <div className="w-screen aspect-square  xs:w-96 bg-[#4B0082] rounded-lg shadow-lg flex flex-wrap space-x-0 space-y-0 relative">
             <div className="absolute top-0 left-1/3 w-3 h-full bg-[#6F2DA8] rounded"></div>
             <div className="absolute top-0 right-1/3 w-3 h-full bg-[#6F2DA8] rounded"></div>
             <div className="absolute left-0 top-1/3 h-3 w-full bg-[#6F2DA8] rounded"></div>
@@ -218,18 +218,18 @@ function TicTacToe() {
           ></Player>
         </div>)}
       </div>
-      <div className="flex justify-evenly flex-col items-center">
+      <div className="flex justify-evenly m-3 flex-col items-center w-4/5">
       <button
           onClick={() => playAgain()}
           className={`${
             winMessage == ""
               ? "bg-green-700/60"
               : "animate-bounce bg-green-700"
-          } hover:bg-green-800 flex justify-center items-center w-4/5 text-lg font-light md:w-96 h-14 rounded-lg p-3 my-6 text-white`}
+          } sm:w-96 hover:bg-green-800 flex justify-center items-center w-full text-lg font-light md:w-96 h-14 rounded-lg p-3 my-6 text-white`}
         >
           {winMessage == "" ? "New Game" : "Play Again!"}
         </button>
-        <div className="bg-red h-32 w-96 rounded-lg flex flex-col">
+        <div className="bg-red w-full h-32 sm:w-96 rounded-lg flex flex-col">
           <div className="flex">
             <th className="w-1/3 h-16 text-center justify-center inline-block bg-purple-700">Tied</th><th className="w-1/3 h-16 text-center justify-center bg-purple-700">O Won</th><th className="w-1/3 h-16 text-center justify-center bg-purple-700">X Won</th></div>
           <div className="flex">
