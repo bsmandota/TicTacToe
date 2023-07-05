@@ -143,40 +143,34 @@ function TicTacToe() {
         <h2
           className={`${
             winMessage == "O Won!"
-              ? "text-[#007FFF]"
+              ? "animate-[bounce_.5s_ease-in-out_1]"
               : winMessage == "X Won!"
-              ? "text-[#3EB489]"
-              : "text-white"
-          } animate-bounce text-3xl text-center  h-14`}
+              ? "animate-[bounce_.5s_ease-in-out_1]"
+              : ""
+          } text-white text-3xl text-center  h-14`}
         >
           {winMessage}
         </h2>
         <div className="flex justify-center items-center">
           <div className="w-screen aspect-square  xs:w-96 bg-[#4B0082] rounded-lg shadow-lg flex flex-wrap space-x-0 space-y-0 relative">
             <div className="absolute pointer-events-none w-full h-full flex justify-evenly">
-              <div className="w-2 h-full bg-[#6F2DA8] rounded"></div>
-              <div className="w-2 h-full bg-[#6F2DA8] rounded"></div>
+              <div className="w-2 h-full bg-purple-300 rounded"></div>
+              <div className="w-2 h-full bg-purple-300 rounded"></div>
             </div>
             <div className="absolute w-full h-full top-0 left-0 flex flex-col items-evenly justify-evenly pointer-events-none">
-              <div className="w-full h-2 bg-[#6F2DA8] rounded"></div>
-              <div className="w-full h-2 bg-[#6F2DA8] rounded"></div>
+              <div className="w-full h-2 bg-purple-300 rounded"></div>
+              <div className="w-full h-2 bg-purple-300 rounded"></div>
             </div>
             {itemArray.map((item, index) => {
               return (
                 <div
                   key={index}
-                  className={`${
-                    item == "O"
-                      ? "bg-[#007FFF]"
-                      : item == "X"
-                      ? "bg-[#3EB489] "
-                      : ""
-                  } w-1/3 h-1/3 text-center items-center flex justify-center rounded-lg `}
+                  className={` w-1/3 h-1/3 text-center items-center flex justify-center rounded-lg `}
                   onClick={() => changeItem(index)}
                 >
                   <div
-                    className={`${item == "O" || item == "X" ? "scale-75" : "scale-0"
-                    } duration-300 flex justify-center items-center`}
+                    className={`${item == "O" || item == "X" ? "animate-[ping_.5s_ease-in_1] scale-75 " : "scale-0"
+                    } duration-300 flex  justify-center items-center`}
                   >
                     {itemArray[index] ? (
                       item == "O" ? (
@@ -185,7 +179,7 @@ function TicTacToe() {
                             cx="50"
                             cy="50"
                             r="40"
-                            stroke="#6F2DA8"
+                            stroke="rgb(233 213 255)"
                             strokeWidth="12"
                             fill="transparent"
                           />
@@ -196,7 +190,7 @@ function TicTacToe() {
                           height="100"
                           width="100"
                           viewBox="0 0 16 16"
-                          stroke="#6F2DA8"
+                          stroke="rgb(233 213 255)"
                           fill="transparent"
                         >
                           <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
@@ -226,8 +220,8 @@ function TicTacToe() {
           onClick={() => playAgain()}
           className={`${
             winMessage == ""
-              ? "bg-green-700/60"
-              : "animate-bounce bg-green-700"
+              ? "bg-green-700"
+              : "animate-[bounce_1s_ease-in-out_1] bg-green-700"
           } sm:w-96 hover:bg-green-800 font-extralight flex justify-center items-center w-full text-lg md:w-96 h-14 rounded-lg p-2 my-6 text-white`}
         >
           {winMessage == "" ? "New Game" : "Play Again!"}
