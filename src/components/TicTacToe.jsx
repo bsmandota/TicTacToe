@@ -169,7 +169,7 @@ function TicTacToe() {
                   onClick={() => changeItem(index)}
                 >
                   <div
-                    className={`${item == "O" || item == "X" ? "animate-[ping_.5s_ease-in_1] scale-75 " : "scale-0"
+                    className={`${item == "O" || item == "X" ? " scale-75 " : "scale-0"
                     } duration-300 flex  justify-center items-center`}
                   >
                     {itemArray[index] ? (
@@ -228,9 +228,9 @@ function TicTacToe() {
         </button>
         <div className="bg-red w-1/2 h-16 sm:w-96 rounded-lg flex flex-col text-gray-300">
           <div className="flex justify-evenly">
-            <th className="w-1/3 h-8 flex text-center justify-center ">Tied</th><th className="w-1/3 h-8 flex text-center justify-center ">O Won</th><th className="w-1/3 h-8 flex text-center justify-center ">X Won</th></div>
+            <th className="w-1/3 h-8 flex text-center justify-center p-2 ">Tied</th><th className="w-1/3 h-8 flex text-center justify-center p-2 ">O </th><th className="w-1/3 h-8 flex text-center justify-center p-2  ">X</th></div>
           <div className="flex justify-evenly">
-            <div className="w-1/3 h-8 flex text-center justify-center  ">{tied}</div><div className="w-1/3 h-8 flex text-center justify-center">{O}</div><div className="w-1/3 h-8 flex text-center justify-center">{X}</div></div>
+            <div className="w-1/3 h-8 flex text-center justify-center p-2  ">{tied}</div><div className="w-1/3 h-8 flex text-center justify-center p-2">{O}</div><div className="w-1/3 h-8 flex text-center justify-center p-2">{X}</div></div>
         </div>
         
       </div>
