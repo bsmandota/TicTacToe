@@ -205,18 +205,17 @@ function TicTacToe() {
                 </div>
               );
             })}
-          </div>
-        </div>
-        
-        {(winMessage=== "O Won!" || winMessage === "X Won!" ) &&(
-        <div className={`absolute top-36 flex justify-center items-center z-10`}>
+            {(winMessage=== "O Won!" || winMessage === "X Won!" ) &&(
+        <div className={`absolute flex justify-center items-center z-10`}>
           <Player
-            className="w-full h-full"
+            className="w-96 h-96"
             autoplay
-            style={{height:400,width:400}}
             src="https://assets10.lottiefiles.com/packages/lf20_poy1vcfr.json"
           ></Player>
         </div>)}
+          </div>
+          
+        </div>
       </div>
       <div className="flex justify-evenly m-3 flex-col items-center w-4/5">
       <button
