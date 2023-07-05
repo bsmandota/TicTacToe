@@ -135,9 +135,9 @@ function TicTacToe() {
      }
   }
   return (
-    <div className="flex items-center min-h-screen flex-col sm:flex-row sm:justify-evenly bg-[#470953] h-auto">
+    <div className="flex items-center tracking-widest min-h-screen flex-col  bg-gradient-to-b from-[#6F2DA8] to-[#4B0082] h-auto">
       <div className="flex justify-evenly flex-col items-center w-3/5">
-        <h1 className="text-6xl rounded bg-clip-text text-transparent bg-gradient-to-b from-[#6F2DA8]/50 via-white to-black font-bold text-center drop-shadow-xl my-4">
+        <h1 className="text-6xl rounded bg-clip-text text-transparent bg-gradient-to-b from-white to-[#4B0082]/50  text-center drop-shadow-xl my-4">
           TicTacToe
         </h1>
         <h2
@@ -147,16 +147,20 @@ function TicTacToe() {
               : winMessage == "X Won!"
               ? "text-[#3EB489]"
               : "text-white"
-          } animate-bounce text-3xl text-center font-extrabold h-14`}
+          } animate-bounce text-3xl text-center  h-14`}
         >
           {winMessage}
         </h2>
         <div className="flex justify-center items-center">
           <div className="w-screen aspect-square  xs:w-96 bg-[#4B0082] rounded-lg shadow-lg flex flex-wrap space-x-0 space-y-0 relative">
-            <div className="absolute top-0 left-1/3 w-3 h-full bg-[#6F2DA8] rounded"></div>
-            <div className="absolute top-0 right-1/3 w-3 h-full bg-[#6F2DA8] rounded"></div>
-            <div className="absolute left-0 top-1/3 h-3 w-full bg-[#6F2DA8] rounded"></div>
-            <div className="absolute left-0 bottom-1/3 h-3 w-full bg-[#6F2DA8] rounded"></div>
+            <div className="absolute pointer-events-none w-full h-full flex justify-evenly">
+              <div className="w-2 h-full bg-[#6F2DA8] rounded"></div>
+              <div className="w-2 h-full bg-[#6F2DA8] rounded"></div>
+            </div>
+            <div className="absolute w-full h-full top-0 left-0 flex flex-col items-evenly justify-evenly pointer-events-none">
+              <div className="w-full h-2 bg-[#6F2DA8] rounded"></div>
+              <div className="w-full h-2 bg-[#6F2DA8] rounded"></div>
+            </div>
             {itemArray.map((item, index) => {
               return (
                 <div
@@ -171,7 +175,7 @@ function TicTacToe() {
                   onClick={() => changeItem(index)}
                 >
                   <div
-                    className={`${item == "O" || item == "X" ? "scale-100 " : "scale-0"
+                    className={`${item == "O" || item == "X" ? "scale-75" : "scale-0"
                     } duration-300 flex justify-center items-center`}
                   >
                     {itemArray[index] ? (
@@ -181,7 +185,7 @@ function TicTacToe() {
                             cx="50"
                             cy="50"
                             r="40"
-                            stroke="#880085"
+                            stroke="#6F2DA8"
                             strokeWidth="12"
                             fill="transparent"
                           />
@@ -189,11 +193,11 @@ function TicTacToe() {
                       ) : (
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          fill="transparent"
                           height="100"
                           width="100"
                           viewBox="0 0 16 16"
-                          stroke="#880085"
+                          stroke="#6F2DA8"
+                          fill="transparent"
                         >
                           <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                         </svg>
@@ -206,7 +210,7 @@ function TicTacToe() {
               );
             })}
             {(winMessage=== "O Won!" || winMessage === "X Won!" ) &&(
-        <div className={`absolute flex justify-center items-center z-10`}>
+        <div className={`absolute flex justify-center items-center`}>
           <Player
             className="w-full aspect-square"
             autoplay
@@ -217,22 +221,22 @@ function TicTacToe() {
           
         </div>
       </div>
-      <div className="flex justify-evenly m-3 flex-col items-center w-4/5">
+      <div className="flex justify-evenly m-2 flex-col items-center w-4/5">
       <button
           onClick={() => playAgain()}
           className={`${
             winMessage == ""
               ? "bg-green-700/60"
               : "animate-bounce bg-green-700"
-          } sm:w-96 hover:bg-green-800 flex justify-center items-center w-full text-lg font-light md:w-96 h-14 rounded-lg p-3 my-6 text-white`}
+          } sm:w-96 hover:bg-green-800 font-extralight flex justify-center items-center w-full text-lg md:w-96 h-14 rounded-lg p-2 my-6 text-white`}
         >
           {winMessage == "" ? "New Game" : "Play Again!"}
         </button>
-        <div className="bg-red w-full h-32 sm:w-96 rounded-lg flex flex-col">
-          <div className="flex">
-            <th className="w-1/3 h-16 text-center justify-center inline-block bg-purple-700">Tied</th><th className="w-1/3 h-16 text-center justify-center bg-purple-700">O Won</th><th className="w-1/3 h-16 text-center justify-center bg-purple-700">X Won</th></div>
-          <div className="flex">
-            <div className="w-1/3 h-16 text-center justify-center inline-block  bg-purple-300">{tied}</div><div className="w-1/3 h-16 text-center justify-center bg-purple-300">{O}</div><div className="w-1/3 h-16 text-center justify-center bg-purple-300">{X}</div></div>
+        <div className="bg-red w-1/2 h-16 sm:w-96 rounded-lg flex flex-col text-gray-300">
+          <div className="flex justify-evenly">
+            <th className="w-1/3 h-8 flex text-center justify-center ">Tied</th><th className="w-1/3 h-8 flex text-center justify-center ">O Won</th><th className="w-1/3 h-8 flex text-center justify-center ">X Won</th></div>
+          <div className="flex justify-evenly">
+            <div className="w-1/3 h-8 flex text-center justify-center  ">{tied}</div><div className="w-1/3 h-8 flex text-center justify-center">{O}</div><div className="w-1/3 h-8 flex text-center justify-center">{X}</div></div>
         </div>
         
       </div>
