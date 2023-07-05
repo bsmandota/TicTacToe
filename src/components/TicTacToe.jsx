@@ -152,7 +152,7 @@ function TicTacToe() {
           {winMessage}
         </h2>
         <div className="flex justify-center items-center">
-          <div className=" w-96 h-96 bg-[#4B0082] rounded-lg shadow-lg flex flex-wrap space-x-0 space-y-0 relative">
+          <div className="w-screen aspect-square md:w-96 md:h-96 bg-[#4B0082] rounded-lg shadow-lg flex flex-wrap space-x-0 space-y-0 relative">
             <div className="absolute top-0 left-1/3 w-3 h-full bg-[#6F2DA8] rounded"></div>
             <div className="absolute top-0 right-1/3 w-3 h-full bg-[#6F2DA8] rounded"></div>
             <div className="absolute left-0 top-1/3 h-3 w-full bg-[#6F2DA8] rounded"></div>
@@ -171,8 +171,7 @@ function TicTacToe() {
                   onClick={() => changeItem(index)}
                 >
                   <div
-                    className={`${
-                      item == "O" || item == "X" ? "scale-100 " : "scale-0"
+                    className={`${item == "O" || item == "X" ? "scale-100 " : "scale-0"
                     } duration-300 flex justify-center items-center`}
                   >
                     {itemArray[index] ? (
@@ -209,8 +208,8 @@ function TicTacToe() {
           </div>
         </div>
         
-        {(winMessage.length > 5 ) &&(
-        <div className={` absolute top-36 flex justify-center items-center z-10`}>
+        {(winMessage=== "O Won!" || winMessage === "X Won!" ) &&(
+        <div className={`absolute top-36 flex justify-center items-center z-10`}>
           <Player
             className="w-full h-full"
             autoplay
