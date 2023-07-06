@@ -227,7 +227,7 @@ function TicTacToe() {
         </button>
         <div className="flex items-center justify-evenly w-full">
           <div className="w-full h-16 rounded-lg flex flex-col text-gray-300 items-center ">
-            <div className="flex w-2/3 justify-evenly">
+            <div className="flex w-2/3 justify-evenly"
               <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">
                 Total
               </th>
