@@ -7,6 +7,7 @@ function TicTacToe() {
   const [itemArray, setItemArray] = useState(Array(9).fill(false));
   const [winMessage, setWinMessage] = useState("");
   const [tied, setTied] = useState(0);
+  const [total,setTotal] = useState(0);
   const [X, setX] = useState(0);
   const [O, setO] = useState(0);
   const checkWinner = (itemArray) => {
@@ -147,7 +148,7 @@ function TicTacToe() {
               : winMessage == "X Won!"
               ? "animate-[bounce_.5s_ease-in_1.45]"
               : ""
-          }  text-white drop-shadow-md shadow-black text-3xl text-center  h-14`}
+          }  text-purple-300 text-3xl text-center  h-14`}
         >
           {winMessage == "" ? `${turn}'s turn` : winMessage}
         </h2>
@@ -216,42 +217,44 @@ function TicTacToe() {
           </div>
         </div>
       </div>
-      <div className="flex justify-evenly m-2 flex-col items-center w-full xs:w-96">
-        <div className="flex w-4/5">
-          <button
+      <div className="flex justify-start m-2 flex-col items-center w-full xs:w-96">
+        <button
             onClick={() => playAgain()}
             className={`${
               winMessage == "" ? "bg-green-700" : "animate-bounce bg-green-700"
-            } hover:bg-green-800 font-extralight flex justify-center items-center w-2/3 text-lg h-14 rounded-lg p-3 my-6 border-r-2 rounded-r-none text-white`}
+            } hover:bg-green-800 font-extralight flex justify-center items-center w-2/3 text-lg h-14 rounded-lg p-3 my-6 mx-3 text-white`}
           >
             {winMessage == "" ? "New Game" : "Play Again"}
           </button>
-          <button
-            onClick={() => startOver()}
-            className={`${
-              winMessage == "" ? "bg-red-700" : "animate-bounce bg-red-700"
-            } hover:bg-red-800 font-extralight flex justify-center items-center w-1/3 h-14 rounded-lg p-3 my-6 rounded-l-none border-l-2 text-white`}
-          >
-            Start Over
-          </button>
-        </div>
-        <div className="w-1/2 h-16 sm:w-96 rounded-lg flex flex-col text-gray-300">
-          <div className="flex justify-evenly">
-            <th className="w-1/3 h-8 flex text-center justify-center p-2 ">Tied</th>
-            <th className="w-1/3 h-8 flex text-center justify-center p-2 ">O</th>
-            <th className="w-1/3 h-8 flex text-center justify-center p-2 ">X</th>
+        <div className="flex items-center justify-evenly w-full">
+        <div className="w-full h-16 rounded-lg flex flex-col text-gray-300 items-center ">
+          <div className="flex w-2/3 justify-evenly">
+          <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">Total</th>
+            <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">O</th>
+            <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">X</th>
+            <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">Tied</th>
           </div>
-          <div className="flex justify-evenly">
-            <div className="w-1/3 h-8 flex text-center justify-center p-2  ">
-              {tied}
+          <div className="flex w-2/3 justify-evenly">
+            <div className="w-1/4 h-8 flex text-center items-center justify-center p-2  ">
+              {total}
             </div>
-            <div className="w-1/3 h-8 flex text-center justify-center p-2">
+            <div className="w-1/4 h-8 flex text-center items-center justify-center p-2">
               {O}
             </div>
-            <div className="w-1/3 h-8 flex text-center justify-center p-2">
+            <div className="w-1/4 h-8 flex text-center items-center justify-center p-2">
               {X}
             </div>
+            <div className="w-1/4 h-8 flex text-center items-center justify-center p-2  ">
+              {tied}
+            </div>
           </div>
+          </div>
+          <button
+            onClick={() => startOver()}
+            className={`bg-red-700 hover:bg-red-800 font-extralight flex justify-center items-center self-center w-1/4 h-12 rounded-lg p-2 mr-6 text-white`}
+          >
+            Reset
+          </button>
         </div>
       </div>
     </div>
