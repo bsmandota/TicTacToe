@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Player, Controls } from "@lottiefiles/react-lottie-player";
+import { Player } from "@lottiefiles/react-lottie-player";
 function TicTacToe() {
   const [newTurn, setNewTurn] = useState("O");
   const [turn, setTurn] = useState(newTurn);
@@ -7,64 +7,64 @@ function TicTacToe() {
   const [itemArray, setItemArray] = useState(Array(9).fill(false));
   const [winMessage, setWinMessage] = useState("");
   const [tied, setTied] = useState(0);
-  const [X,setX] =useState(0);
-  const [O,setO] =useState(0);
+  const [X, setX] = useState(0);
+  const [O, setO] = useState(0);
   const checkWinner = (itemArray) => {
     if (
       itemArray[0] === itemArray[1] &&
       itemArray[0] === itemArray[2] &&
       itemArray[0] !== false
     ) {
-      updateStats(itemArray[0])
+      updateStats(itemArray[0]);
       return setWinMessage(`${itemArray[0]} Won!`);
     } else if (
       itemArray[3] === itemArray[4] &&
       itemArray[3] === itemArray[5] &&
       itemArray[3] !== false
     ) {
-      updateStats(itemArray[3])
+      updateStats(itemArray[3]);
       return setWinMessage(`${itemArray[3]} Won!`);
     } else if (
       itemArray[6] === itemArray[7] &&
       itemArray[6] === itemArray[8] &&
       itemArray[6] !== false
     ) {
-      updateStats(itemArray[6])
+      updateStats(itemArray[6]);
       return setWinMessage(`${itemArray[6]} Won!`);
     } else if (
       itemArray[0] === itemArray[3] &&
       itemArray[3] === itemArray[6] &&
       itemArray[3] !== false
     ) {
-      updateStats(itemArray[0])
+      updateStats(itemArray[0]);
       return setWinMessage(`${itemArray[0]} Won!`);
     } else if (
       itemArray[1] === itemArray[4] &&
       itemArray[1] === itemArray[7] &&
       itemArray[1] !== false
     ) {
-      updateStats(itemArray[1])
+      updateStats(itemArray[1]);
       return setWinMessage(`${itemArray[1]} Won!`);
     } else if (
       itemArray[2] === itemArray[5] &&
       itemArray[2] === itemArray[8] &&
       itemArray[2] !== false
     ) {
-      updateStats(itemArray[2])
+      updateStats(itemArray[2]);
       return setWinMessage(`${itemArray[2]} Won!`);
     } else if (
       itemArray[0] === itemArray[4] &&
       itemArray[0] === itemArray[8] &&
       itemArray[0] !== false
     ) {
-      updateStats(itemArray[0])
+      updateStats(itemArray[0]);
       return setWinMessage(`${itemArray[0]} Won!`);
     } else if (
       itemArray[2] === itemArray[4] &&
       itemArray[2] === itemArray[6] &&
       itemArray[2] !== false
     ) {
-      updateStats(itemArray[2])
+      updateStats(itemArray[2]);
       return setWinMessage(`${itemArray[2]} Won!`);
     }
     let res = 0;
@@ -74,25 +74,21 @@ function TicTacToe() {
       }
     }
     if (res === 9) {
-      
-      updateStats("Tied")
+      updateStats("Tied");
       return setWinMessage("Game Tied!");
     }
   };
   function changeItem(index) {
-  if(winMessage === "Game Tied!"){
-    console.log()
-    let newTied = tied+1;
-    setTied(3);
-   }
-   else if(winMessage === "O Won!"){
-    let newO = O+1;
-    setO(newO);
-   }
-   else if(winMessage === "X Won!"){
-    let newX = X+1
-    setX(newX);
-   }
+    if (winMessage === "Game Tied!") {
+      let newTied = tied + 1;
+      setTied(newTied);
+    } else if (winMessage === "O Won!") {
+      let newO = O + 1;
+      setO(newO);
+    } else if (winMessage === "X Won!") {
+      let newX = X + 1;
+      setX(newX);
+    }
     if (winMessage == "") {
       console.log(itemArray[index]);
       console.log(itemArray);
@@ -123,36 +119,40 @@ function TicTacToe() {
     setItemArray(Array(9).fill(false));
     setWinMessage("");
   };
-  function updateStats(hi){
-    if(hi == "Tied"){
-      setTied(tied+1);
-     }
-     else if(hi == "O"){
-      setO(O+1);
-     }
-     else if(hi == "X"){
-       setX(X+1);
-     }
+  function updateStats(hi) {
+    if (hi == "Tied") {
+      setTied(tied + 1);
+    } else if (hi == "O") {
+      setO(O + 1);
+    } else if (hi == "X") {
+      setX(X + 1);
+    }
+  }
+  function startOver() {
+    setTied(0);
+    setO(0);
+    setX(0);
+    playAgain();
   }
   return (
     <div className="flex items-center tracking-widest min-h-screen flex-col  bg-gradient-to-b from-[#6F2DA8] to-[#4B0082] h-auto">
       <div className="flex justify-evenly flex-col items-center w-3/5">
-        <h1 className="text-6xl rounded bg-clip-text text-transparent bg-gradient-to-b from-white to-[#4B0082]/50  text-center drop-shadow-xl my-4">
+        <h1 className="text-5xl rounded bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-[#4B0082]/50  text-center drop-shadow-xl my-4 overflow-hidden">
           TicTacToe
         </h1>
         <h2
           className={`${
             winMessage == "O Won!"
-              ? "animate-[bounce_.5s_ease-in-out_1]"
+              ? "animate-[bounce_.5s_ease-in_1.45]"
               : winMessage == "X Won!"
-              ? "animate-[bounce_.5s_ease-in-out_1]"
+              ? "animate-[bounce_.5s_ease-in_1.45]"
               : ""
-          } text-white text-3xl text-center  h-14`}
+          }  text-white drop-shadow-md shadow-black text-3xl text-center  h-14`}
         >
-          {winMessage}
+          {winMessage == "" ? `${turn}'s turn` : winMessage}
         </h2>
-        <div className="flex justify-center items-center">
-          <div className="w-screen aspect-square  xs:w-96 bg-[#4B0082] rounded-lg shadow-lg flex flex-wrap space-x-0 space-y-0 relative">
+        <div className="flex justify-center items-center scale-95 xs:scale-100">
+          <div className="w-screen aspect-square  xs:w-96 bg-[#4B0082] rounded-lg shadow-lg flex flex-wrap relative">
             <div className="absolute pointer-events-none w-full h-full flex justify-evenly">
               <div className="w-2 h-full bg-purple-300 rounded"></div>
               <div className="w-2 h-full bg-purple-300 rounded"></div>
@@ -169,8 +169,9 @@ function TicTacToe() {
                   onClick={() => changeItem(index)}
                 >
                   <div
-                    className={`${item == "O" || item == "X" ? " scale-75 " : "scale-0"
-                    } duration-300 flex  justify-center items-center`}
+                    className={`${
+                      item == "O" || item == "X" ? " scale-75 " : "scale-0"
+                    } duration-300 flex justify-center items-center`}
                   >
                     {itemArray[index] ? (
                       item == "O" ? (
@@ -203,36 +204,55 @@ function TicTacToe() {
                 </div>
               );
             })}
-            {(winMessage=== "O Won!" || winMessage === "X Won!" ) &&(
-        <div className={`absolute flex justify-center items-center`}>
-          <Player
-            className="w-full aspect-square"
-            autoplay
-            src="https://assets10.lottiefiles.com/packages/lf20_poy1vcfr.json"
-          ></Player>
-        </div>)}
+            {(winMessage === "O Won!" || winMessage === "X Won!") && (
+              <div className={`absolute flex justify-center items-center`}>
+                <Player
+                  className="w-full aspect-square"
+                  autoplay
+                  src="https://assets10.lottiefiles.com/packages/lf20_poy1vcfr.json"
+                ></Player>
+              </div>
+            )}
           </div>
-          
         </div>
       </div>
-      <div className="flex justify-evenly m-2 flex-col items-center w-4/5">
-      <button
-          onClick={() => playAgain()}
-          className={`${
-            winMessage == ""
-              ? "bg-green-700"
-              : "animate-[bounce_1s_ease-in-out_1] bg-green-700"
-          } sm:w-96 hover:bg-green-800 font-extralight flex justify-center items-center w-full text-lg md:w-96 h-14 rounded-lg p-2 my-6 text-white`}
-        >
-          {winMessage == "" ? "New Game" : "Play Again!"}
-        </button>
-        <div className="bg-red w-1/2 h-16 sm:w-96 rounded-lg flex flex-col text-gray-300">
-          <div className="flex justify-evenly">
-            <th className="w-1/3 h-8 flex text-center justify-center p-2 ">Tied</th><th className="w-1/3 h-8 flex text-center justify-center p-2 ">O </th><th className="w-1/3 h-8 flex text-center justify-center p-2  ">X</th></div>
-          <div className="flex justify-evenly">
-            <div className="w-1/3 h-8 flex text-center justify-center p-2  ">{tied}</div><div className="w-1/3 h-8 flex text-center justify-center p-2">{O}</div><div className="w-1/3 h-8 flex text-center justify-center p-2">{X}</div></div>
+      <div className="flex justify-evenly m-2 flex-col items-center w-full xs:w-96">
+        <div className="flex w-4/5">
+          <button
+            onClick={() => playAgain()}
+            className={`${
+              winMessage == "" ? "bg-green-700" : "animate-bounce bg-green-700"
+            } hover:bg-green-800 font-extralight flex justify-center items-center w-2/3 text-lg h-14 rounded-lg p-3 my-6 border-r-2 rounded-r-none text-white`}
+          >
+            {winMessage == "" ? "New Game" : "Play Again"}
+          </button>
+          <button
+            onClick={() => startOver()}
+            className={`${
+              winMessage == "" ? "bg-red-700" : "animate-bounce bg-red-700"
+            } hover:bg-red-800 font-extralight flex justify-center items-center w-1/3 h-14 rounded-lg p-3 my-6 rounded-l-none border-l-2 text-white`}
+          >
+            Start Over
+          </button>
         </div>
-        
+        <div className="w-1/2 h-16 sm:w-96 rounded-lg flex flex-col text-gray-300">
+          <div className="flex justify-evenly">
+            <th className="w-1/3 h-8 flex text-center justify-center p-2 ">Tied</th>
+            <th className="w-1/3 h-8 flex text-center justify-center p-2 ">O</th>
+            <th className="w-1/3 h-8 flex text-center justify-center p-2 ">X</th>
+          </div>
+          <div className="flex justify-evenly">
+            <div className="w-1/3 h-8 flex text-center justify-center p-2  ">
+              {tied}
+            </div>
+            <div className="w-1/3 h-8 flex text-center justify-center p-2">
+              {O}
+            </div>
+            <div className="w-1/3 h-8 flex text-center justify-center p-2">
+              {X}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
