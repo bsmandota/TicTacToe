@@ -7,7 +7,6 @@ function TicTacToe() {
   const [itemArray, setItemArray] = useState(Array(9).fill(false));
   const [winMessage, setWinMessage] = useState("");
   const [tied, setTied] = useState(0);
-  const [total,setTotal] = useState(0);
   const [X, setX] = useState(0);
   const [O, setO] = useState(0);
   const checkWinner = (itemArray) => {
@@ -210,7 +209,7 @@ function TicTacToe() {
                 <Player
                   className="w-full aspect-square"
                   autoplay
-                  src="https://assets10.lottiefiles.com/packages/lf20_poy1vcfr.json"
+                  src="https://assets4.lottiefiles.com/packages/lf20_tiviyc3p.json"
                 ></Player>
               </div>
             )}
@@ -219,35 +218,40 @@ function TicTacToe() {
       </div>
       <div className="flex justify-start m-2 flex-col items-center w-full xs:w-96">
         <button
-            onClick={() => playAgain()}
-            className={`${
-              winMessage == "" ? "bg-green-700" : "animate-bounce bg-green-700"
-            } hover:bg-green-800 font-extralight flex justify-center items-center w-2/3 text-lg h-14 rounded-lg p-3 my-6 mx-3 text-white`}
-          >
-            {winMessage == "" ? "New Game" : "Play Again"}
-          </button>
+          onClick={() => playAgain()}
+          className={`${
+            winMessage == "" ? "bg-green-700" : "animate-bounce bg-green-700"
+          } hover:bg-green-800 font-extralight flex justify-center items-center w-2/3 text-lg h-14 rounded-lg p-3 my-6 mx-3 text-white`}
+        >
+          {winMessage == "" ? "New Game" : "Play Again"}
+        </button>
         <div className="flex items-center justify-evenly w-full">
-        <div className="w-full h-16 rounded-lg flex flex-col text-gray-300 items-center ">
-          <div className="flex w-2/3 justify-evenly">
-          <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">Total</th>
-            <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">O</th>
-            <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">X</th>
-            <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">Tied</th>
-          </div>
-          <div className="flex w-2/3 justify-evenly">
-            <div className="w-1/4 h-8 flex text-center items-center justify-center p-2  ">
-              {total}
+          <div className="w-full h-16 rounded-lg flex flex-col text-gray-300 items-center ">
+            <div className="flex w-2/3 justify-evenly">
+              <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">
+                Total
+              </th>
+              <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">
+                O
+              </th>
+              <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">
+                X
+              </th>
+              <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">
+                Tied
+              </th>
             </div>
-            <div className="w-1/4 h-8 flex text-center items-center justify-center p-2">
-              {O}
+            <div className="flex w-2/3 justify-evenly">
+              <div className="w-1/4 h-8 flex text-center items-center justify-center p-2">
+                {O}
+              </div>
+              <div className="w-1/4 h-8 flex text-center items-center justify-center p-2">
+                {X}
+              </div>
+              <div className="w-1/4 h-8 flex text-center items-center justify-center p-2  ">
+                {tied}
+              </div>
             </div>
-            <div className="w-1/4 h-8 flex text-center items-center justify-center p-2">
-              {X}
-            </div>
-            <div className="w-1/4 h-8 flex text-center items-center justify-center p-2  ">
-              {tied}
-            </div>
-          </div>
           </div>
           <button
             onClick={() => startOver()}
@@ -260,5 +264,4 @@ function TicTacToe() {
     </div>
   );
 }
-
 export default TicTacToe;
