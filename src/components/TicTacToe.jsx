@@ -90,8 +90,6 @@ function TicTacToe() {
       setX(newX);
     }
     if (winMessage == "") {
-      console.log(itemArray[index]);
-      console.log(itemArray);
       let newTurn = turn;
       let newIconArray = [...turnArray];
       let newItemArray = [...itemArray];
@@ -221,38 +219,38 @@ function TicTacToe() {
           onClick={() => playAgain()}
           className={`${
             winMessage == "" ? "bg-green-700" : "animate-bounce bg-green-700"
-          } hover:bg-green-800 font-extralight flex justify-center items-center w-2/3 text-lg h-14 rounded-lg p-3 my-6 mx-3 text-white`}
+          } hover:bg-green-800 font-extralight flex justify-center items-center w-3/4 text-lg h-14 rounded-lg p-3 my-6 text-white`}
         >
           {winMessage == "" ? "New Game" : "Play Again"}
         </button>
-        <div className="flex items-center justify-evenly w-full">
-          <div className="w-full h-16 rounded-lg flex flex-col text-gray-300 items-center ">
-            <div className="flex w-2/3 justify-evenly">
-              <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">
+        <div className="flex items-center justify-around w-3/4 -translate-x-2">
+          <div className="h-16 w-1/2 rounded-lg flex flex-col text-purple-300 items-between">
+            <div className="flex w-full justify-evenly">
+              <th className="w-1/4 h-8 flex text-center justify-center items-center ">
                 O
               </th>
-              <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">
-                X
-              </th>
-              <th className="w-1/4 h-8 flex text-center items-center justify-center p-2 ">
+              <th className="w-1/4 h-8 flex text-center justify-center items-center ">
                 Tied
               </th>
+              <th className="w-1/4 h-8 flex text-center justify-center items-center ">
+                X
+              </th>
             </div>
-            <div className="flex w-2/3 justify-evenly">
-              <div className="w-1/4 h-8 flex text-center items-center justify-center p-2">
+            <div className="flex w-full justify-evenly">
+              <div className="w-1/4 h-8 flex text-center justify-center items-center">
                 {O}
               </div>
-              <div className="w-1/4 h-8 flex text-center items-center justify-center p-2">
-                {X}
-              </div>
-              <div className="w-1/4 h-8 flex text-center items-center justify-center p-2  ">
+              <div className="w-1/4 h-8 flex text-center justify-center items-center">
                 {tied}
+              </div>
+              <div className="w-1/4 h-8 flex text-center justify-center items-center">
+                {X}
               </div>
             </div>
           </div>
           <button
             onClick={() => startOver()}
-            className={`bg-red-700 hover:bg-red-800 font-extralight flex justify-center items-center self-center w-1/4 h-12 rounded-lg p-2 mr-6 text-white`}
+            className={`bg-red-700/80 hover:bg-red-800/80 font-extralight flex justify-center items-center self-center w-1/2 h-14 rounded-lg text-white`}
           >
             Reset
           </button>
